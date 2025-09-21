@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  agent:
+    image: aws-bedrock-core-agent:0.1
+    container_name: aws-bedrock-core-agent
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    # If you prefer to mount local code for development, uncomment and adjust:
+    # volumes:
+    #   - ..:/app:ro
+    restart: unless-stopped
+    command: ["python", "agent-app.py"]

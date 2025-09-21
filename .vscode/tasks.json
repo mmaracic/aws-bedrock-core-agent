@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Docker image",
+      "type": "shell",
+      "command": "docker build -t aws-bedrock-core-agent:0.1 -f docker/Dockerfile .",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+    ,
+    {
+      "label": "Activate venv & install requirements",
+      "type": "shell",
+      "command": "bash -lc 'source .venv/bin/activate && pip install -r requirements.txt'",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+    ,
+    {
+      "label": "Run app locally",
+      "type": "shell",
+      "command": "bash -lc 'source .venv/bin/activate && python agent-app.py'",
+      "dependsOn": ["Activate venv & install requirements"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+    ,
+    {
+      "label": "Start docker-compose",
+      "type": "shell",
+      "command": "docker-compose -f ./docker/docker-compose.yml up --build",
+      "dependsOn": ["Build Docker image"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
