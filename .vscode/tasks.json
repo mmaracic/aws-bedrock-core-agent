@@ -31,7 +31,7 @@
     {
       "label": "Run app locally",
       "type": "shell",
-      "command": "bash -lc 'source .venv/bin/activate && python agent-app.py'",
+            "command": "bash -lc 'source .venv/bin/activate && python -m dotenv run -- python agent-app.py'",
       "dependsOn": ["Activate venv & install requirements"],
       "presentation": {
         "echo": true,

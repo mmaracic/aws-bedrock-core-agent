@@ -1,3 +1,4 @@
 bedrock-agentcore-starter-toolkit
 boto3
 
+openai-agents
